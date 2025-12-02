@@ -26,19 +26,32 @@ calcul.addEventListener('click', () => {
         if(mensualite > monthlySalary * 0.4){
             alert(`Refusé : mensualité trop élevée (${mensualite} MAD) pour un salaire de Y`)
         }
+        else{
+            show_summary(loan_amount, loanDuration, interest_rate, mensualite, total_to_repay)
+        }
     } else if (loanDuration >= 13 && loanDuration <= 36) {
         interest_rate = 0.05; 
         total_to_repay = loan_amount * (1 + interest_rate);
         mensualite = total_to_repay / loanDuration;
         resultElement.textContent = total_to_repay.toString();
-        
+        if(mensualite > monthlySalary * 0.4){
+            alert(`Refusé : mensualité trop élevée (${mensualite} MAD) pour un salaire de Y`)
+        }
+        else{
+            show_summary(loan_amount, loanDuration, interest_rate, mensualite, total_to_repay)
+        }
 
     } else if (loanDuration > 36) {
         interest_rate = 0.07; 
         total_to_repay = loan_amount * (1 + interest_rate);
         mensualite = total_to_repay / loanDuration;
         resultElement.textContent = total_to_repay.toString();
-        
+        if(mensualite > monthlySalary * 0.4){
+            alert(`Refusé : mensualité trop élevée (${mensualite} MAD) pour un salaire de Y`)
+        }
+        else{
+            show_summary(loan_amount, loanDuration, interest_rate, mensualite, total_to_repay)
+        }
 
     } else {
         alert('Veuillez saisir une durée acceptable !!');
@@ -47,5 +60,5 @@ calcul.addEventListener('click', () => {
 });
 
 function show_summary(amount, duration, interest_rates, mensualite, total_to_repay){
-    
+    resultElement.textContent = `le montant est ${amount} et la duree est ${duration} et le montant applique est ${interest_rates} et la mensaulite est ${mensualite} et le tatl a pay est ${total_to_repay}`
 }
